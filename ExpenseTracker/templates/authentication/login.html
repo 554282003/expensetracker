@@ -1,0 +1,41 @@
+{% extends "base_auth.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+
+        <div class="card mt-5">
+            <div class="card-title mt-5">
+                <h3 class='text-center'>Login</h3>
+            </div>
+        
+            <div class="card-body">
+                <form action="{% url 'login' %}" method='post'>
+                    {% csrf_token %}
+
+                    {% include "partials/_messages.html" %}
+                    <div class="form-group">
+                        <input type="text" name="username" id="usernamefield" placeholder='username' value='{{fieldvalues.username}}' class="form-control form-control-sm mb-2 py-2">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="passwordfield" placeholder='password' class="form-control form-control-sm mb-2 py-2">
+                        <small class='float-end py-1 px-3 showpasswordtoggle text-end' style='cursor:pointer'>SHOW</small>
+                    </div>
+                    <div class="m-auto text-center">
+                        <input type="submit" value='Login' class='btn bg-black w-100 mt-2 submit-btn'>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        
+
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<script src="{% static 'js/register.js' %}"></script>
+
+{% endblock %}
